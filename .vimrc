@@ -103,9 +103,10 @@ function! HasPaste()
     endif
 endfunction
 
-" My ouseful comma-stuff
-set pastetoggle=,m
+" My useful comma-stuff
+set pastetoggle=,l
 map ,. :wq<CR>
+map ,m :!make
 imap ,, <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
