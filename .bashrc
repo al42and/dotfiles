@@ -80,7 +80,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias myctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  --langmap=c:+.cu --langmap=c:+.cuh --exclude=".pc"'
+alias myctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c:+.cu --langmap=c:+.cuh --exclude=".pc"'
 alias svngrep='grep -IR --exclude-dir="*/CMakeFiles/*" --exclude-dir="*/.svn/*"'
 
 # some more ls aliases
