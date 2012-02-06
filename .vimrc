@@ -33,6 +33,34 @@ set showmatch "Show matching bracets when text indicator is over them
 
 syntax enable "Enable syntax hl
 
+" Omnicompletion
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.cu,*.cuh,*.h set omnifunc=omni#cpp#complete#Main
+
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/cuda
+set tags+=~/.vim/tags/qt4
+" " build tags of your own project with Ctrl-F12
+"
+" " OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set nocp
+
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
+
+map ,t :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set encoding=utf8
 try
@@ -106,19 +134,12 @@ endfunction
 " My useful comma-stuff
 set pastetoggle=,l
 map ,. :wq<CR>
-map ,m :!make
+map ,m :!make<CR>
 imap ,, <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 
 "Delete trailing white space, useful for Python ;)
 func! DeleteTrailingWS()
@@ -139,9 +160,6 @@ set guitablabel=%t
 let python_highlight_all = 1
 au FileType python syn keyword pythonDecorator True None False self
 
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set ft=mako
-
 au FileType python inoremap <buffer> $r return
 au FileType python inoremap <buffer> $i import
 au FileType python inoremap <buffer> $p print
@@ -156,7 +174,7 @@ au FileType python map <buffer> <leader>D ?def
 " => Command-T
 """""""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc,.svn
 noremap <leader>j :CommandT<cr>
 noremap <leader>y :CommandTFlush<cr>
 
@@ -165,7 +183,7 @@ noremap <leader>y :CommandTFlush<cr>
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " CUDA
-au BufRead,BufNewFile *.cuh set filetype=c
+au BufRead,BufNewFile *.cuh set filetype=cu
 
 " Charmm
 au BufRead,BufNewFile *.inp set filetype=charmm
