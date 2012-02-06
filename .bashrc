@@ -3,7 +3,7 @@
 # for examples
 
 # Set lang
-LANG=C
+LANG=en_US.UTF8
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
