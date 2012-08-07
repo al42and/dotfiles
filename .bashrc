@@ -16,8 +16,8 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=16000
-HISTFILESIZE=16000
+HISTSIZE=128000
+HISTFILESIZE=128000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -88,6 +88,20 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Start ssh-agent
+if [ -f ~/.agent.env ] ; then
+    . ~/.agent.env > /dev/null
+if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1; then
+    echo "Stale agent file found. Spawning new agent… "
+    eval `ssh-agent | tee ~/.agent.env`
+    ssh-add
+fi 
+else
+    echo "Starting ssh-agent"
+    eval `ssh-agent | tee ~/.agent.env`
+    ssh-add
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -104,5 +118,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=$HOME/local/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda42/cuda
+export PATH=$HOME/local/bin:$PATH:$CUDA_HOME/bin
+export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$LD_LIBRARY_PATH:$CUDA_HOME/lib64
