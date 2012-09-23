@@ -60,8 +60,6 @@ set nocp
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
 
-map ,t :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
 set encoding=utf8
 try
     lang en_US
@@ -132,10 +130,12 @@ function! HasPaste()
 endfunction
 
 " My useful comma-stuff
-set pastetoggle=,l
-map ,. :wq<CR>
-map ,m :!make<CR>
 imap ,, <ESC>
+set pastetoggle=,l
+map ,m :!make<CR>
+map ,t :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c:+.cu --langmap=c:+.cuh --exclude=".pc" .<CR>
+map ,j :tabp<CR>
+map ,k :tabn<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
