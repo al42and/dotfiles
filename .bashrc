@@ -72,8 +72,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -81,7 +79,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias myctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c:+.cu --langmap=c:+.cuh --exclude=".pc"'
-alias svngrep='grep -IR --exclude-dir="*/CMakeFiles/*" --exclude-dir="*/.svn/*"'
+alias svngrep='grep -IR --exclude-dir="*/CMakeFiles/*" --exclude-dir="*/.svn/*" --exclude="*.*~"'
 
 # some more ls aliases
 alias ll='ls -alF'
