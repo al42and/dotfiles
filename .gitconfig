@@ -1,0 +1,49 @@
+[user]
+	name       = Andrey Alekseenko
+    email      = al42and@gmail.com
+
+[alias]
+    # Base commands
+    ci         = commit
+    br         = branch
+    co         = checkout
+    df         = diff
+    lg         = log -p
+    st         = status --short
+
+    # Stash commands
+    sl         = stash list
+    sa         = stash apply
+    ss         = stash save
+
+    # Show all prfiles
+    ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
+
+    # Show only tracked files
+    stu        = status --untracked-files=no
+
+    # Show history
+    hist       = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+[color]
+    ui     = true
+    status = true
+    diff   = true
+
+    [color "branch"]
+        current = yellow reverse
+        local   = yellow
+        remote  = green
+
+    [color "diff"]
+        meta       = green
+        frag       = yellow
+        old        = magenta
+        new        = cyan
+        whitespace = red reverse
+
+    [color "status"]
+        added      = yellow
+        changed    = green
+        untracked  = cyan
+
