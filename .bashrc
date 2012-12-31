@@ -152,3 +152,5 @@ export CUDA_HOME=/usr/local/cuda-5.0
 
 export PATH=$HOME/local/bin:$PATH:$CUDA_HOME/bin
 export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export PYTHONPATH=$HOME/local/lib/python2.7/site-packages/
+
