@@ -147,8 +147,17 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-
 autocmd BufWrite *.py :call DeleteTrailingWS()
+
+function ModeChange()
+  if getline(1) =~ "^#!"
+    if getline(1) =~ "bin/"
+      silent !chmod a+x <afile>
+    endif
+  endif
+endfunction
+au BufWritePost * call ModeChange()
+
 
 set guitablabel=%t
 
