@@ -42,8 +42,7 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.cu,*.cuh,*.h set omnifunc=omni#cpp#
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/cuda
 set tags+=~/.vim/tags/qt4
-" " build tags of your own project with Ctrl-F12
-"
+
 " " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
@@ -158,6 +157,17 @@ function ModeChange()
 endfunction
 au BufWritePost * call ModeChange()
 
+function! WriteInitPy()
+  let @q = "\#\!/usr/bin/env python\n\#-*- encoding: utf-8 -*-\n\nfrom sys import argv, exit\n\n"
+  execute "0put q"
+endfunction
+autocmd BufNewFile *.py call WriteInitPy()
+
+function! WriteInitSh()
+  let @q = "\#\!/bin/bash\n\nset -euo pipefail\n\n"
+  execute "0put q"
+endfunction
+autocmd BufNewFile *.sh call WriteInitSh()
 
 set guitablabel=%t
 
