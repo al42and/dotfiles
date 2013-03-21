@@ -76,6 +76,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    alias pgrepl='pgrep -l'
 fi
 
 alias myctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c:+.cu --langmap=c:+.cuh --exclude=".pc"'
