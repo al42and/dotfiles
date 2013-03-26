@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -euo pipefail
+
+TEMPFILEC=$(mktemp -q --suffix=.cpp)
+TEMPFILEE=$(mktemp -q)
+trap "rm -f \"$TEMPFILEC\" \"$TEMPFILEE\"" EXIT
+
+cat << EOF > "$TEMPFILEC"
+#include <stdio.h>
+#include <iostream>
+#include <math.h>
+
+int main() {
+$@
+return 0;
+}
+EOF
+
+g++ -lm "$TEMPFILEC" -o "$TEMPFILEE"
+"$TEMPFILEE"
+
