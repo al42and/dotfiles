@@ -1,0 +1,3 @@
+[submodule "local/undistract-me"]
+	path = local/undistract-me
+	url = git://github.com/jml/undistract-me.git

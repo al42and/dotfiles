@@ -110,29 +110,6 @@ fi
 # I've got too non-linear hands...
 alias cim='vim'
 
-
-function extract()      # Handy Extract Program.
-{
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1     ;;
-            *.tar.gz)    tar xvzf $1     ;;
-            *.bz2)       bunzip2 $1      ;;
-            *.rar)       unrar x $1      ;;
-            *.gz)        gunzip $1       ;;
-            *.tar)       tar xvf $1      ;;
-            *.tbz2)      tar xvjf $1     ;;
-            *.tgz)       tar xvzf $1     ;;
-            *.zip)       unzip $1        ;;
-            *.Z)         uncompress $1   ;;
-            *.7z)        7z x $1         ;;
-            *)           echo "'$1' cannot be extracted via >extract<" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -149,6 +126,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Enable undistract-me
+if which notify-send &>/dev/null; then
+    UNDISTRACTDIR="$HOME/local/undistract-me"
+    LONG_RUNNING_PREEXEC_LOCATION="$UNDISTRACTDIR/preexec.bash"
+    source "$UNDISTRACTDIR/long-running.bash"
+    notify_when_long_running_commands_finish_install
+fi
 
 export CUDA_HOME=/usr/local/cuda-5.0
 
