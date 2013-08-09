@@ -109,6 +109,7 @@ if which vim &>/dev/null; then
 fi
 # I've got too non-linear hands...
 alias cim='vim'
+alias vum='vim'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -130,11 +131,13 @@ fi
 if which notify-send &>/dev/null; then
     UNDISTRACTDIR="$HOME/local/undistract-me"
     LONG_RUNNING_PREEXEC_LOCATION="$UNDISTRACTDIR/preexec.bash"
-    source "$UNDISTRACTDIR/long-running.bash"
-    notify_when_long_running_commands_finish_install
+    if [ -f "$LONG_RUNNING_PREEXEC_LOCATION" ]; then
+        source "$UNDISTRACTDIR/long-running.bash"
+        notify_when_long_running_commands_finish_install
+    fi
 fi
 
-export CUDA_HOME=/usr/local/cuda-5.0
+export CUDA_HOME=/usr/local/cuda
 
 export PATH=$HOME/local/bin:$PATH:$CUDA_HOME/bin
 export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH
