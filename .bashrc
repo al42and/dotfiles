@@ -18,12 +18,11 @@ HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
 shopt -s cmdhist
 
-# Save and reload the history after each command finishes
-if [ -n "$PROMPT_COMMAND" ]; then
-    PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND}";
-else
-    PROMPT_COMMAND="history -n; history -w; history -c; history -r";
-fi
+# Save and reload the history on command
+hsync(){
+    builtin history -a
+    builtin history -n
+}
 
 # Sensible history size
 HISTSIZE=128000
