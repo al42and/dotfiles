@@ -25,6 +25,9 @@
     # Show history
     hist       = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
+    # Show diff of given commit
+    sd         = show --pretty=format:%b
+
 [color]
     ui     = true
     status = true
