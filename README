@@ -2,4 +2,5 @@ cd $HOME
 git init
 git remote add origin git@github.com:al42and/dotfiles.git
 git pull origin master
-
+git submodule init
+git submodule update
