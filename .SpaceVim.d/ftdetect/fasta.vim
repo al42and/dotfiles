@@ -1,0 +1,1 @@
+../../.bioSyntax-vim/ftdetect/fasta.vim

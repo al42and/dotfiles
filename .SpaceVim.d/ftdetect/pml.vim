@@ -1,0 +1,1 @@
+../../.bioSyntax-vim/ftdetect/pml.vim

@@ -2,6 +2,12 @@
     name       = Andrey Alekseenko
     email      = al42and@gmail.com
 
+[merge]
+    tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
 [alias]
     # Base commands
     ci         = commit

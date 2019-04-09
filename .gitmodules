@@ -1,3 +1,12 @@
 [submodule ".gimp-2.8"]
 	path = .gimp-2.8
 	url = https://github.com/doctormo/GimpPs.git
+[submodule ".SpaceVim"]
+	path = .SpaceVim
+	url = ./.SpaceVim
+[submodule ".vim"]
+	path = .vim
+	url = ./.vim/
+[submodule ".bioSyntax-vim"]
+	path = .bioSyntax-vim
+	url = https://github.com/bioSyntax/bioSyntax-vim.git

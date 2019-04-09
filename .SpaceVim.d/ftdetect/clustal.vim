@@ -1,0 +1,1 @@
+/home/aland/.bioSyntax-vim/ftdetect/clustal.vim
