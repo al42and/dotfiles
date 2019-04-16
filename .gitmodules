@@ -4,3 +4,6 @@
 [submodule ".bioSyntax-vim"]
 	path = .bioSyntax-vim
 	url = https://github.com/bioSyntax/bioSyntax-vim.git
+[submodule ".supertab"]
+	path = .supertab
+	url = https://github.com/ervandew/supertab.git
