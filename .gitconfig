@@ -34,6 +34,9 @@
     # Show diff of given commit
     sd         = show --pretty=format:%b
 
+    # Make "git git" work like "git"
+    git        = !git
+
 [color]
     ui     = true
     status = true

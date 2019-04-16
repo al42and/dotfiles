@@ -140,9 +140,11 @@ fi
 if which vim &>/dev/null; then 
     export EDITOR=vim
 fi
+
 # I've got too non-linear hands...
 alias cim='vim'
 alias vum='vim'
+alias got='git'
 
 # Conda
 alias conda2='source anaconda2/bin/activate'
