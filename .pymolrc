@@ -6,13 +6,17 @@ set cartoon_tube_radius, 1.2
 set ribbon_width, 8
 
 alias white, bg_color white;
-alias ribbonize,\
+alias crtn,\
     hide; show cartoon; set cartoon_fancy_helices, 1; \
     hide cartoon, ( resname A or resname G or resname C or resname U or resname T ); \
     show sticks, ( resname A or resname G or resname C or resname U or resname T ); \
     show sticks, organic; \
-    util.cbc; \
+    show sticks, inorganic; \
+    show lines, solvent; \
+    util.cnc; \
     color hotpink, ( resname A or resname G or resname C or resname U or resname T )
+alias shiny, set spec_power=250; set spec_refl=1.5;
+alias chalky, set spec_power=-1; set spec_refl=-1;
 
 # Raytrace parameters
 set ray_trace_mode, 0
