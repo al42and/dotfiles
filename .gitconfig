@@ -7,6 +7,7 @@
 
 [diff]
     tool = vimdiff
+    noprefix = true
 
 [alias]
     # Base commands
@@ -36,6 +37,8 @@
 
     # Make "git git" work like "git"
     git        = !git
+
+    dry        = "!f() { git merge-tree $(git merge-base FETCH_HEAD $1) $1 FETCH_HEAD | sed -n '/+<<<<<<< .our/,/+>>>>>>> .their/p;/^changed in both/{n;N;N;s/^/#/mg;p}' ; }; f"
 
 [color]
     ui     = true
