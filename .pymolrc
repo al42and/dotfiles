@@ -1,5 +1,9 @@
 # General environment
 
+# Disable echoing all commands while loading this file
+feedback disable,all,actions
+feedback disable,all,results
+
 # Protein styling
 hide lines
 set cartoon_tube_radius, 1.2
@@ -55,3 +59,7 @@ set_color cb_gold, [153, 153, 51]
 set_color cb_salmon, [204, 102, 119]
 set_color cb_red, [136, 34, 85]
 set_color cb_pink, [170, 68, 153]
+
+
+feedback enable,all,actions
+feedback enable,all,results
