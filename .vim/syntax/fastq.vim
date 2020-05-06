@@ -1,1 +1,0 @@
-../../.bioSyntax-vim/syntax/fastq.vim
