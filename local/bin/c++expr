@@ -10,6 +10,8 @@ cat << EOF > "$TEMPFILEC"
 #include <stdio.h>
 #include <iostream>
 #include <math.h>
+#include <limits.h>
+#include <string.h>
 
 int main() {
 $@
@@ -17,6 +19,6 @@ return 0;
 }
 EOF
 
-g++ -lm "$TEMPFILEC" -o "$TEMPFILEE"
+g++ -std=gnu++14 -lm "$TEMPFILEC" -o "$TEMPFILEE"
 "$TEMPFILEE"
 
