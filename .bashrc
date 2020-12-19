@@ -35,6 +35,10 @@ HISTFILESIZE=1280000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+# shopt -s globstar
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -45,7 +49,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -114,6 +118,7 @@ fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -137,14 +142,9 @@ else
 fi
 
 # Update default editor
-if which vim &>/dev/null; then 
+if [ "$(command -v vim)" ]; then 
     export EDITOR=vim
 fi
-
-# I've got too non-linear hands...
-alias cim='vim'
-alias vum='vim'
-alias got='git'
 
 # Conda
 alias conda2='source anaconda2/bin/activate'
