@@ -15,3 +15,5 @@
 "\eOF": end-of-line
 "\e[H": beginning-of-line
 "\e[F": end-of-line
+# https://unix.stackexchange.com/a/103502/10804
+set history-size 30000
