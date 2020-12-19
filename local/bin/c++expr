@@ -19,6 +19,6 @@ return 0;
 }
 EOF
 
-g++ -std=gnu++14 -lm "$TEMPFILEC" -o "$TEMPFILEE"
+g++ -std=c++17 -lm "$TEMPFILEC" -o "$TEMPFILEE"
 "$TEMPFILEE"
 
