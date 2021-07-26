@@ -147,8 +147,8 @@ if [ "$(command -v vim)" ]; then
 fi
 
 # Conda
-alias conda2='source anaconda2/bin/activate'
-alias conda3='source anaconda3/bin/activate'
+alias conda2="source $HOME/anaconda2/bin/activate"
+alias conda3="source $HOME/anaconda3/bin/activate"
 
 # Autoexpand !!, !* and !$
 bind Space:magic-space
