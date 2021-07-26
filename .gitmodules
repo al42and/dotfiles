@@ -1,6 +1,6 @@
-[submodule ".gimp-2.8"]
-	path = .gimp-2.8
-	url = https://github.com/doctormo/GimpPs.git
 [submodule ".supertab"]
 	path = .supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule ".config/GIMP/2.10"]
+	path = .config/GIMP/2.10
+	url = https://github.com/doctormo/GimpPs.git
