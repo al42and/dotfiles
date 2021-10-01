@@ -63,4 +63,11 @@
         untracked  = cyan
 
 [pull]
-	ff = only
+    ff = only
+
+[fetch]
+    prune = true
+
+[rerere]
+    enabled = true
+
