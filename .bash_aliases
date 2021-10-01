@@ -15,3 +15,8 @@ alias vin='vim'
 alias vun='vim'  # Okay, at this stage it miiiight be a better idea to take a break
 alias gut='git'
 
+function ressh() {
+    args_all_but_last="${@:1:$#-1}"
+    arg_last="${@:${#@}}"
+    ssh ${args_all_but_last} -t tmux new-session -A -s "${arg_last}"
+}
