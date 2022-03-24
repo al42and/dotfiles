@@ -128,17 +128,18 @@ if ! shopt -oq posix; then
 fi
 
 # Start ssh-agent on logon
-if [ -f ~/.ssh/agent.env ]; then
-    . ~/.ssh/agent.env > /dev/null
+SSH_AGENT_FLAG="${HOME}/.ssh/agent.$(hostname).env"
+if [ -f "${SSH_AGENT_FLAG}" ]; then
+    . "${SSH_AGENT_FLAG}" > /dev/null
     if [ ! -S "${SSH_AUTH_SOCK}" ]; then
         echo "Stale agent file found. Spawning new agent…"
-        eval $(ssh-agent | tee ~/.ssh/agent.env)
+        eval $(ssh-agent | tee "${SSH_AGENT_FLAG}")
         ssh-add
     fi 
 else
     if [ -z "$container" ]; then  # Don't even bother inside a containerized environment
         echo "Starting ssh-agent"
-        eval $(ssh-agent | tee ~/.ssh/agent.env)
+        eval $(ssh-agent | tee "${SSH_AGENT_FLAG}")
         ssh-add
     fi
 fi
