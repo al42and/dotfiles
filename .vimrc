@@ -89,6 +89,14 @@ map U <C-r>
 " Ctrl-Backspace = Ctrl-W
 imap <C-BS> <C-W>
 
+" ctrl+left/right
+nmap <ESC>[1;5D <C-Left>
+nmap <ESC>[1;5C <C-Right>
+cmap <ESC>[1;5D <C-Left>
+cmap <ESC>[1;5C <C-Right>
+imap <ESC>[1;5D <C-o><C-Left>
+imap <ESC>[1;5C <C-o><C-Right>
+
 " Search
 map <space> /
 map <c-space> ?
