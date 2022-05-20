@@ -16,6 +16,8 @@ filetype on
 filetype plugin on
 filetype indent on
 
+colorscheme default
+
 set so=7 " Add "preview zones" while scrolling
 
 " Tabs
@@ -152,7 +154,7 @@ autocmd BufNewFile *.py call WriteInitPy()
 
 " Add boilerplate to .sh files
 function! WriteInitSh()
-  let @q = "\#\!/bin/bash\n\nset -euo pipefail\n\n"
+  let @q = "\#\!/bin/bash\n\nset -euo pipefail\nIFS=$'\\n\\t'\n"
   execute "0put q"
 endfunction
 autocmd BufNewFile *.sh call WriteInitSh()
