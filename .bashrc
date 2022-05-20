@@ -159,8 +159,8 @@ bind Space:magic-space
 # Set up $PATH &c
 export CUDA_HOME=/usr/local/cuda
 
-export PATH=$HOME/local/bin:$CUDA_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export PATH=$HOME/local/bin:$CUDA_HOME/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
