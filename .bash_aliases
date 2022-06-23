@@ -21,3 +21,15 @@ function ressh() {
     arg_last="${@:${#@}}"
     ssh ${args_all_but_last} -t tmux new-session -A -s "${arg_last}"
 }
+
+function m() {
+    targets=""
+    jproc="-j$(nproc)"
+    for arg in $@; do
+        case "$arg" in
+            -j*) jproc="$arg";;
+            *) targets="${targets} --target ${arg}";;
+        esac
+    done
+    ionice -c 3 nice cmake --build . ${targets} -- "${jproc}"
+}
