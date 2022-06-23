@@ -9,6 +9,8 @@ trap "rm -f \"$TEMPFILEC\" \"$TEMPFILEE\"" EXIT
 cat << EOF > "$TEMPFILEC"
 #include <stdio.h>
 #include <iostream>
+#include <numeric>
+#include <regex>
 #include <math.h>
 #include <limits.h>
 #include <string.h>
