@@ -156,6 +156,13 @@ alias conda3="source $HOME/anaconda3/bin/activate"
 # Autoexpand !!, !* and !$
 bind Space:magic-space
 
+# Enable fzf
+if [ -x "$HOME/local/bin/fzf" ]; then
+    [[ $- == *i* ]] && source "$HOME/.fzf/completion.bash" 2> /dev/null
+    source "$HOME/.fzf/key-bindings.bash"
+fi
+
+
 # Set up $PATH &c
 export CUDA_HOME=/usr/local/cuda
 
