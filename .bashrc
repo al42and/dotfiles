@@ -158,8 +158,10 @@ bind Space:magic-space
 
 # Enable fzf
 if [ -x "$HOME/local/bin/fzf" ]; then
+    FZF_CTRL_R_OPTS="--border sharp"
     [[ $- == *i* ]] && source "$HOME/.fzf/completion.bash" 2> /dev/null
     source "$HOME/.fzf/key-bindings.bash"
+    source "$HOME/.fzf/history-exec.bash"
 fi
 
 
