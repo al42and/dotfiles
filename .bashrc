@@ -170,6 +170,7 @@ export CUDA_HOME=/usr/local/cuda
 
 export PATH=$HOME/local/bin:$CUDA_HOME/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/share/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
 
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
