@@ -16,8 +16,8 @@ filetype on
 filetype plugin on
 filetype indent on
 
-"colorscheme default
-colorscheme solarized
+colorscheme default
+"colorscheme solarized
 
 set so=7 " Add "preview zones" while scrolling
 
