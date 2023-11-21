@@ -157,7 +157,7 @@ alias conda3="source $HOME/anaconda3/bin/activate"
 bind Space:magic-space
 
 # Enable fzf
-if [ -x "$HOME/local/bin/fzf" ]; then
+if "$HOME/local/bin/fzf --version" &>/dev/null; then
     FZF_CTRL_R_OPTS="--border sharp --no-mouse --exact"
     [[ $- == *i* ]] && source "$HOME/.fzf/completion.bash" 2> /dev/null
     source "$HOME/.fzf/key-bindings.bash"
