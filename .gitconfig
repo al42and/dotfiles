@@ -16,21 +16,13 @@
     co         = checkout
     df         = diff
     lg         = log -p
-    st         = status --short
-
-    # Stash commands
-    sl         = stash list
-    sa         = stash apply
-    ss         = stash save
-
-    # Show all prfiles
-    ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
+    pr         = pull --rebase --autostash
 
     # Show only tracked files
     stu        = status --untracked-files=no
 
     # Show history
-    hist       = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    hist       = log --pretty=format:\"%h %ad %C(bold)%s%Creset%d [%an]\" --graph --date=short
 
     # Show diff of given commit
     sd         = show --pretty=format:%b
