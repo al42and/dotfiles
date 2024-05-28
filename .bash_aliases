@@ -19,7 +19,11 @@ alias gut='git'
 function ressh() {
     args_all_but_last="${@:1:$#-1}"
     arg_last="${@:${#@}}"
-    ssh ${args_all_but_last} -t tmux new-session -A -s "${arg_last}"
+    if [ $arg_last == ls ]; then
+      ssh ${args_all_but_last} tmux list-sessions
+    else
+      ssh ${args_all_but_last} -t tmux new-session -A -s "${arg_last}"
+    fi
 }
 
 function m() {
