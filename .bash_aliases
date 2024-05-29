@@ -16,6 +16,10 @@ alias vin='vim'
 alias vun='vim'  # Okay, at this stage it miiiight be a better idea to take a break
 alias gut='git'
 
+if which rsync &> /dev/null; then
+    alias scp="rsync -ahxAX --inplace --info=progress2"
+fi
+
 function ressh() {
     args_all_but_last="${@:1:$#-1}"
     arg_last="${@:${#@}}"
