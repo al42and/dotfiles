@@ -16,10 +16,29 @@ filetype on
 filetype plugin on
 filetype indent on
 
-colorscheme default
-"colorscheme solarized
+set termguicolors
+
+"" Cursor control
+let &t_RC = "\e[?12$p"
+let &t_SH = "\e[%d q"
+let &t_RS = "\eP$q q\e\\"
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[1 q"
+let &t_VS = "\e[?12l"
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce. This causes incorrect background rendering when
+" using a color theme with a background color in terminals such as
+" kitty that do not support background color erase.
+let &t_ut=''
+
+"colorscheme default
+colorscheme catppuccin_mocha
 
 set so=7 " Add "preview zones" while scrolling
+
+set number  " Show line number
 
 " Tabs
 set tabstop=4
@@ -30,7 +49,7 @@ set wildmenu " Turn on <TAB> suggestions
 set wildmode=list:longest " Complete till the longest common substring
 set wildignore+=*.o,*.obj,.git,*.pyc,.svn
 
-set lz " Lazy redraw
+set lazyredraw " Lazy redraw
 
 set ruler "Always show current position
 
