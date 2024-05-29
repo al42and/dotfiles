@@ -84,4 +84,6 @@ function! FoldLicense()
 endfunction
 
 "autocmd Filetype *.cmake CMakeLists.txt *.cpp *.h *.cu *.cuh *.cl *.clh :call FoldLicense()
-autocmd Filetype cmake,c,cpp :call FoldLicense()
+if !&diff
+    autocmd Filetype cmake,c,cpp :call FoldLicense()
+endif
