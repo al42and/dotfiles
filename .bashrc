@@ -42,6 +42,15 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+export LESS='-R'
+if type -P batcat > /dev/null; then
+  export LESSOPEN="|batcat --color always %s"
+  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
+elif type -P bat > /dev/null; then
+  export LESSOPEN="|bat --color always %s"
+  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+fi
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -152,6 +161,8 @@ fi
 # Conda
 alias conda2="source $HOME/anaconda2/bin/activate"
 alias conda3="source $HOME/anaconda3/bin/activate"
+
+export PYTHONSTARTUP=$HOME/local/share/pythonstartup.py
 
 # Autoexpand !!, !* and !$
 bind Space:magic-space
