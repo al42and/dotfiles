@@ -8,13 +8,18 @@ trap "rm -f \"$TEMPFILEC\" \"$TEMPFILEE\"" EXIT
 
 cat << EOF > "$TEMPFILEC"
 #include <stdio.h>
+#include <dlfcn.h>
 #include <filesystem>
 #include <iostream>
 #include <numeric>
+#include <optional>
 #include <regex>
 #include <math.h>
 #include <limits.h>
 #include <string.h>
+
+#define DBG_MACRO_NO_WARNING
+#include "dbg.h"
 
 int main() {
 $@
@@ -22,6 +27,6 @@ return 0;
 }
 EOF
 
-g++ -std=c++17 -lm "$TEMPFILEC" -o "$TEMPFILEE"
+g++ -std=c++17 -isystem"${HOME}/local/include/dbg-macro/" -lm "$TEMPFILEC" -o "$TEMPFILEE"
 "$TEMPFILEE"
 
