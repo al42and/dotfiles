@@ -17,6 +17,7 @@
     df         = diff
     lg         = log -p
     pr         = pull --rebase --autostash
+    fpush      = push --force-with-lease
 
     # Show only tracked files
     stu        = status --untracked-files=no
