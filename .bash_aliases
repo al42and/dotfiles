@@ -4,7 +4,7 @@ alias gl='git log'
 alias gpom='git pull origin master'
 alias gdc='git diff --cached'
 alias gs='git status .'
-alias cfi='clang-format-11 -i'
+alias cfi='clang-format-18 -i'
 
 alias fd=fdfind
 
