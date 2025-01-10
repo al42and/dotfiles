@@ -44,11 +44,15 @@ shopt -s checkwinsize
 
 export LESS='-R'
 if type -P batcat > /dev/null; then
-  export LESSOPEN="|batcat --color always %s"
-  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
+  BAT=batcat
 elif type -P bat > /dev/null; then
-  export LESSOPEN="|bat --color always %s"
-  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+  BAT=bat
+fi
+if [ -n "$BAT" ]; then
+  export LESSOPEN="|${BAT} --color always %s"
+  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | ${BAT} -p -lman'"
+  if [ ! -f "${HOME}/.cache/bat/themes.bin" ]; then ${BAT} cache --build; fi
+  unset BAT
 fi
 
 # set variable identifying the chroot you work in (used in the prompt below)
