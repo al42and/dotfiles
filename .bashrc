@@ -31,6 +31,11 @@ hsync(){
 HISTSIZE=128000
 HISTFILESIZE=1280000
 
+# Expand PATHs
+export PATH=$HOME/local/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib{LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/share/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -43,9 +48,9 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 export LESS='-R'
-if type -P batcat > /dev/null; then
+if command -v batcat >/dev/null; then
   BAT=batcat
-elif type -P bat > /dev/null; then
+elif command -v bat >/dev/null; then
   BAT=bat
 fi
 if [ -n "$BAT" ]; then
@@ -148,7 +153,7 @@ if [ -f "${SSH_AGENT_FLAG}" ]; then
         echo "Stale agent file found. Spawning new agent…"
         eval $(ssh-agent | tee "${SSH_AGENT_FLAG}")
         ssh-add
-    fi 
+    fi
 else
     if [ -z "$container" ]; then  # Don't even bother inside a containerized environment
         echo "Starting ssh-agent"
@@ -158,7 +163,7 @@ else
 fi
 
 # Update default editor
-if [ "$(command -v vim)" ]; then 
+if command -v vim >/dev/null ]; then
     export EDITOR=vim
 fi
 
@@ -172,7 +177,7 @@ export PYTHONSTARTUP=$HOME/local/share/pythonstartup.py
 bind Space:magic-space
 
 # Enable fzf
-if "$HOME/local/bin/fzf" --version &>/dev/null; then
+if command -v fzf >/dev/null; then
     FZF_CTRL_R_OPTS="--border sharp --no-mouse --exact"
     [[ $- == *i* ]] && source "$HOME/.fzf/completion.bash" 2> /dev/null
     source "$HOME/.fzf/key-bindings.bash"
@@ -183,9 +188,6 @@ fi
 # Set up $PATH &c
 export CUDA_HOME=/usr/local/cuda
 
-export PATH=$HOME/local/bin:$CUDA_HOME/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib:$CUDA_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/share/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
 
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
