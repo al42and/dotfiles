@@ -1,0 +1,11 @@
+# Don't display the copyright page
+startup_message off
+
+# Start from one (https://savannah.gnu.org/bugs/?31368#comment0)
+bind c screen 1  # new windows start at 1
+bind 0 select 10 # C-a 0 selects window 10, not window 0
+bind ` select 0  # C-a ` selects window 0
+screen 1         # create window 1 on startup to inhibit window 0
+
+# Always show fancy status line
+hardstatus alwayslastline "%{+r} %-w%{+bu I}%n-%t%{-}%+w %= %{+ b}%11` "
