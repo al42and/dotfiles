@@ -33,7 +33,7 @@ HISTFILESIZE=1280000
 
 # Expand PATHs
 export PATH=$HOME/local/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib{LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=$HOME/local/lib64:$HOME/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$HOME/local/share/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
 
 # check the window size after each command and, if necessary,
