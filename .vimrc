@@ -181,3 +181,5 @@ autocmd BufNewFile *.sh call WriteInitSh()
 
 autocmd! BufWritePost vimrc source ~/.vimrc " Autoapply vimrc on update
 
+set diffopt+=internal,algorithm:patience
+
