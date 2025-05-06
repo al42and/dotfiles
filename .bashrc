@@ -167,6 +167,10 @@ if command -v vim >/dev/null; then
     export EDITOR=vim
 fi
 
+if command -v ninja >/dev/null; then
+    export CMAKE_GENERATOR=Ninja
+fi
+
 # Conda
 alias conda2="source $HOME/anaconda2/bin/activate"
 alias conda3="source $HOME/anaconda3/bin/activate"
