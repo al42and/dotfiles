@@ -163,7 +163,7 @@ else
 fi
 
 # Update default editor
-if command -v vim >/dev/null ]; then
+if command -v vim >/dev/null; then
     export EDITOR=vim
 fi
 
