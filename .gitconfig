@@ -101,6 +101,7 @@
 
 [delta]
     features = catppuccin-mocha
+    true-color = always
 
 [init]
     defaultBranch = main
